@@ -453,5 +453,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
     config = load_config(args.config_path)
     config = {**config, 'update_paper_links': args.update_paper_links}
-    print(f"apikey is {dashscope.api_key}")
     demo(**config)
