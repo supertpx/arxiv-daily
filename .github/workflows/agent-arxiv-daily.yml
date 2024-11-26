@@ -43,13 +43,13 @@ jobs:
           pip install arxiv
           pip install requests
           pip install pyyaml
-          pip install dashscope
+          pip install google-generativeai
           
       - name: Run daily arxiv 
         run: |
           python daily_arxiv.py
         env:
-          DASHSCOPE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       - name: Push new agent-arxiv-daily.md
         uses: github-actions-x/commit@v2.9
