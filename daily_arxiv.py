@@ -9,7 +9,6 @@ import datetime
 import requests
 import google.generativeai as genai
 
-print(os.environ["GOOGLE_API_KEY"])
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 logging.basicConfig(format='[%(asctime)s %(levelname)s] %(message)s',
