@@ -7,10 +7,9 @@ import logging
 import argparse
 import datetime
 import requests
-import dashscope
+import google.generativeai as genai
 
-dashscope.api_key = os.environ.get("DASHSCOPE_API_KEY")
-
+genai.configure(api_key=os.environ["API_KEY"])
 
 logging.basicConfig(format='[%(asctime)s %(levelname)s] %(message)s',
                     datefmt='%m/%d/%Y %H:%M:%S',
@@ -107,10 +106,8 @@ def llm_generate_summary(prompt):
     msg = prompt_formate.format(context=prompt)
     from http import HTTPStatus
 
-    response = dashscope.Generation.call(
-        model=dashscope.Generation.Models.qwen_turbo,
-        prompt=msg
-    )
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    response = model.generate_content(msg)
     # 如果调用成功，则打印模型的输出
     if response.status_code == HTTPStatus.OK:
         logging.info(response.output.text)
