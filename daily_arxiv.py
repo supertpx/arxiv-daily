@@ -109,15 +109,9 @@ def llm_generate_summary(prompt):
     model = genai.GenerativeModel("gemini-1.5-flash")
     response = model.generate_content(msg)
     # 如果调用成功，则打印模型的输出
-    if response.status_code == HTTPStatus.OK:
-        logging.info(response.output.text)
-        rsp = response.output.text
+    rsp = response.text
     # 如果调用失败，则打印出错误码与失败信息
-    else:
-        logging.error("can not generate response, use old message")
-        logging.error(response.code)
-        logging.error(response.message)
-        rsp = prompt
+    # todo
 
     return rsp
 
