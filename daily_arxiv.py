@@ -93,18 +93,39 @@ def get_code_link(qword: str) -> str:
     return code_link
 
 
-def llm_generate_summary(prompt):
+def llm_generate_summary(prompt, model_name="GLM-4-Flash"):
+    """
+    使用LLM生成论文摘要的翻译。
 
-    response = client.chat.completions.create(model="GLM-4-Flash",messages=[
-        {"role": "system", "content": "你是一个专业的翻译专家，专注于计算机科学领域的英译汉，请你将下面的论文摘要翻译为中文，不要输出其他任何无关内容，注意输出的内容中不能包含'|'字符"},
-        {"role": "user", "content": prompt}
-    ],)
-    # 如果调用成功，则打印模型的输出
-    rsp = response.choices[0].message.content
-    # 如果调用失败，则打印出错误码与失败信息
-    # todo
+    :param prompt: 需要翻译的论文摘要
+    :param model_name: 使用的模型名称，默认为 "GLM-4-Flash"
+    :return: 翻译后的摘要
+    """
+    # 检查输入是否为空
+    if not prompt:
+        return "输入为空"
 
-    return rsp
+    try:
+        # 调用API生成翻译结果
+        response = client.chat.completions.create(
+            model=model_name,
+            messages=[
+                {
+                    "role": "system",
+                    "content": "你是一个专业的翻译专家，专注于计算机科学领域的翻译，请你将下面的论文摘要翻译为中文，不要输出其他任何无关内容"
+                },
+                {"role": "user", "content": prompt}
+            ]
+        )
+        
+        # 获取翻译结果
+        translated_summary = response.choices[0].message.content
+    except Exception as e:
+        # 处理API调用失败的情况
+        print(f"API调用失败: {e}")
+        translated_summary = prompt
+    
+    return translated_summary
 
 
 def get_daily_papers(topic, query="agent", max_results=2):
@@ -119,13 +140,16 @@ def get_daily_papers(topic, query="agent", max_results=2):
     print("-----------------")
     print(f"query is {query}")
     print("-----------------")
-    search_engine = arxiv.Search(
+    arxiv_search = arxiv.Search(
         query=query,
         max_results=max_results,
-        sort_by=arxiv.SortCriterion.SubmittedDate
+        sort_by=arxiv.SortCriterion.SubmittedDate,
+    )
+    arxiv_client = arxiv.Client(
+        page_size=max_results,
     )
 
-    for result in search_engine.results():
+    for result in arxiv_client.results(arxiv_search):
 
         paper_id = result.get_short_id()
         paper_title = result.title
