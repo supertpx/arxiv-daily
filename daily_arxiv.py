@@ -9,7 +9,7 @@ import datetime
 import requests
 from zhipuai import ZhipuAI
 
-client = ZhipuAI(api_key=os.environ["API_KEY"])
+client = ZhipuAI(api_key=os.environ['API_KEY'])
 
 logging.basicConfig(format='[%(asctime)s %(levelname)s] %(message)s',
                     datefmt='%m/%d/%Y %H:%M:%S',
@@ -93,20 +93,14 @@ def get_code_link(qword: str) -> str:
     return code_link
 
 
-prompt_formate = """
-## context
-{context}
-## task
-请你将上述论文摘要翻译为中文，不要输出其他任何无关内容，注意输出的内容中不能包含"|"字符
-"""
-
-
 def llm_generate_summary(prompt):
 
-    msg = prompt_formate.format(context=prompt)
-    response = client.chat.completions.create(model="GLM-4-Flash",messages=msg,)
+    response = client.chat.completions.create(model="GLM-4-Flash",messages=[
+        {"role": "system", "content": "你是一个专业的翻译专家，专注于计算机科学领域的英译汉，请你将下面的论文摘要翻译为中文，不要输出其他任何无关内容，注意输出的内容中不能包含'|'字符"},
+        {"role": "user", "content": prompt}
+    ],)
     # 如果调用成功，则打印模型的输出
-    rsp = response.choices[0].message
+    rsp = response.choices[0].message.content
     # 如果调用失败，则打印出错误码与失败信息
     # todo
 
