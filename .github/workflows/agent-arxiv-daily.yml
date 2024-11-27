@@ -49,7 +49,7 @@ jobs:
         run: |
           python daily_arxiv.py
         env:
-          GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          API_KEY: ${{ secrets.ZHIPU_API_KEY }}
 
       - name: Push new agent-arxiv-daily.md
         uses: github-actions-x/commit@v2.9

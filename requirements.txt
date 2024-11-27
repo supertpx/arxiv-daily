@@ -1,4 +1,4 @@
 requests
 arxiv
 pyyaml
-google-generativeai
+zhipuai

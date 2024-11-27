@@ -7,9 +7,9 @@ import logging
 import argparse
 import datetime
 import requests
-import google.generativeai as genai
+from zhipuai import ZhipuAI
 
-genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+client = ZhipuAI(api_key=os.environ["API_KEY"])
 
 logging.basicConfig(format='[%(asctime)s %(levelname)s] %(message)s',
                     datefmt='%m/%d/%Y %H:%M:%S',
@@ -104,12 +104,9 @@ prompt_formate = """
 def llm_generate_summary(prompt):
 
     msg = prompt_formate.format(context=prompt)
-    from http import HTTPStatus
-
-    model = genai.GenerativeModel("gemini-1.5-flash")
-    response = model.generate_content(msg)
+    response = client.chat.completions.create(model="GLM-4-Flash",messages=msg,)
     # 如果调用成功，则打印模型的输出
-    rsp = response.text
+    rsp = response.choices[0].message
     # 如果调用失败，则打印出错误码与失败信息
     # todo
 
