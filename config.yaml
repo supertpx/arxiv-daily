@@ -22,7 +22,7 @@ keywords:
         filters: [LLM based agents,Large Language Model based agents,LLM agent,Multi-Agent]
     "llm":
         filters: ["Large Language Model"]
-    "infer":
+    "inference":
         filters: ["LLM inference"]
     "train":
         filters: ["LLM Train"]
