@@ -112,7 +112,7 @@ def llm_generate_summary(prompt, model_name="GLM-4-Flash"):
             messages=[
                 {
                     "role": "system",
-                    "content": "你是一个专业的翻译专家，专注于计算机科学领域的翻译，请你将下面的论文摘要翻译为中文，不要输出其他任何无关内容"
+                    "content": "你是一个专业的翻译专家，专注于计算机科学领域的翻译，请你将下面的论文摘要翻译为中文，不要输出其他任何无关内容。请一步步推理再给出中文翻译结果。"
                 },
                 {"role": "user", "content": prompt}
             ]
