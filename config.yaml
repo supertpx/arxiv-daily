@@ -19,7 +19,7 @@ md_readme_path: 'README.md'
 
 keywords:
     "agent":
-        filters: [LLM based agents,Large Language Model based agents,LLM agent,Multi-Agent]
+        filters: [LLM agent,Multi-Agent]
     "llm":
         filters: ["Large Language Model"]
     "infer":
