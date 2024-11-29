@@ -12,7 +12,7 @@ publish_gitpage: False
 publish_wechat: False
 
 # file paths
-json_readme_path: './docs/agent-arxiv-daily.json'
+json_readme_path: './docs/arxiv-daily.json'
 
 md_readme_path: 'README.md'
 
