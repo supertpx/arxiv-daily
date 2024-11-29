@@ -279,27 +279,32 @@ def update_json_file(filename, data_dict):
     '''
     daily update json file using data_dict
     '''
-    with open(filename, "r") as f:
-        content = f.read()
-        if not content:
-            m = {}
-        else:
-            m = json.loads(content)
-
-    json_data = m.copy()
+    try:
+        with open(filename, "r", encoding='utf-8') as f:
+            content = f.read()
+            if not content:
+                json_data = {}
+            else:
+                json_data = json.loads(content)
+    except FileNotFoundError:
+        json_data = {}
+    except json.JSONDecodeError:
+        print(f"Error: {filename} is not a valid JSON file.")
+        return
 
     # update papers in each keywords
     for data in data_dict:
-        for keyword in data.keys():
-            papers = data[keyword]
-
-            if keyword in json_data.keys():
+        for keyword, papers in data.items():
+            if keyword in json_data:
                 json_data[keyword].update(papers)
             else:
                 json_data[keyword] = papers
 
-    with open(filename, "w") as f:
-        json.dump(json_data, f)
+    try:
+        with open(filename, "w", encoding='utf-8') as f:
+            json.dump(json_data, f, ensure_ascii=False, indent=4)
+    except IOError as e:
+        print(f"Error writing to {filename}: {e}")
 
 
 def json_to_md(filename, md_filename,
