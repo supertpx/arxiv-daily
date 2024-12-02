@@ -5,9 +5,8 @@ import arxiv
 import yaml
 import logging
 import argparse
+import datetime
 import requests
-
-from datetime import datetime
 from zhipuai import ZhipuAI
 
 client = ZhipuAI(api_key=os.environ['API_KEY'])
@@ -63,8 +62,10 @@ def get_authors(authors, first_author=False):
     return output
 
 
+
 def parse_date(item):
     try:
+        from datetime import datetime
         date_str = item[1].split('|')[1].strip('*')
         return datetime.strptime(date_str, '%Y-%m-%d')
     except (IndexError, ValueError) as e:
