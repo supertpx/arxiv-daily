@@ -63,12 +63,8 @@ def get_authors(authors, first_author=False):
 
 
 def sort_papers(papers):
-    output = dict()
-    keys = list(papers.keys())
-    keys.sort(reverse=True)
-    for key in keys:
-        output[key] = papers[key]
-    return output
+    sorted_papers = dict(sorted(papers.items(), key=lambda item: datetime.strptime(item[1].split('|')[1].strip('*'), '%Y-%m-%d')))
+    return sorted_papers
 
 
 def get_code_link(qword: str) -> str:
@@ -188,15 +184,15 @@ def get_daily_papers(topic, query="agent", max_results=2):
 
             if repo_url is not None:
                 content[paper_key] = "|**{}**|**{}**|{} et.al.|[{}]({})|**[link]({})**|**{}**|\n".format(
-                    update_time, paper_title, paper_first_author, paper_key, paper_url, repo_url, paper_abstract)
+                    publish_time, paper_title, paper_first_author, paper_key, paper_url, repo_url, paper_abstract)
                 content_to_web[paper_key] = "- {}, **{}**, {} et.al., Paper: [{}]({}), Code: **[{}]({})**".format(
-                    update_time, paper_title, paper_first_author, paper_url, paper_url, repo_url, repo_url)
+                    publish_time, paper_title, paper_first_author, paper_url, paper_url, repo_url, repo_url)
 
             else:
                 content[paper_key] = "|**{}**|**{}**|{} et.al.|[{}]({})|null|{}|\n".format(
-                    update_time, paper_title, paper_first_author, paper_key, paper_url, paper_abstract)
+                    publish_time, paper_title, paper_first_author, paper_key, paper_url, paper_abstract)
                 content_to_web[paper_key] = "- {}, **{}**, {} et.al., Paper: [{}]({}),{}".format(
-                    update_time, paper_title, paper_first_author, paper_url, paper_url, paper_abstract)
+                    publish_time, paper_title, paper_first_author, paper_url, paper_url, paper_abstract)
 
             # TODO: select useful comments
             comments = None
