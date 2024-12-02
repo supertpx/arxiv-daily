@@ -80,7 +80,7 @@ def sort_papers(papers):
     parsed_papers = [(key, value, parse_date((key, value))) for key, value in papers.items()]
     
     # 按解析后的日期排序
-    sorted_papers = sorted(parsed_papers, key=lambda item: item[2])
+    sorted_papers = sorted(parsed_papers, key=lambda item: item[2], reverse=True)
     
     # 重新构建字典
     return {item[0]: item[1] for item in sorted_papers}
