@@ -43,7 +43,7 @@ jobs:
           pip install arxiv
           pip install requests
           pip install pyyaml
-          ppip install zhipuai
+          pip install zhipuai
           
       - name: Run daily arxiv 
         run: |
