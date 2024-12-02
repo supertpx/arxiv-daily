@@ -5,8 +5,9 @@ import arxiv
 import yaml
 import logging
 import argparse
-import datetime
 import requests
+
+from datetime import datetime
 from zhipuai import ZhipuAI
 
 client = ZhipuAI(api_key=os.environ['API_KEY'])
@@ -62,9 +63,26 @@ def get_authors(authors, first_author=False):
     return output
 
 
+def parse_date(item):
+    try:
+        date_str = item[1].split('|')[1].strip('*')
+        return datetime.strptime(date_str, '%Y-%m-%d')
+    except (IndexError, ValueError) as e:
+        print(f"Warning: Invalid date format for paper {item[0]}: {item[1]}. Using default date.")
+        return datetime.min  # 使用最小日期作为默认值
+
 def sort_papers(papers):
-    sorted_papers = dict(sorted(papers.items(), key=lambda item: datetime.strptime(item[1].split('|')[1].strip('*'), '%Y-%m-%d')))
-    return sorted_papers
+    if not papers:
+        return {}
+
+    # 提前解析日期字符串
+    parsed_papers = [(key, value, parse_date((key, value))) for key, value in papers.items()]
+    
+    # 按解析后的日期排序
+    sorted_papers = sorted(parsed_papers, key=lambda item: item[2])
+    
+    # 重新构建字典
+    return {item[0]: item[1] for item in sorted_papers}
 
 
 def get_code_link(qword: str) -> str:
