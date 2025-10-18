@@ -1,4 +1,4 @@
-## Updated on 2025.10.17
+## Updated on 2025.10.18
 > Usage instructions: [here](./docs/README.md#usage)
 
 <details>
@@ -619,7 +619,7 @@
 |**2024-11-21**|**Physics-Informed LLM-Agent for Automated Modulation Design in Power Electronics Systems**|Junhua Liu et.al.|[2411.14214](http://arxiv.org/abs/2411.14214)|null|基于LLM的自主代理在解决复杂工业任务方面表现出卓越的性能。然而，在追求碳中和和高性能可再生能源系统的过程中，现有的AI辅助设计自动化在可解释性、可扩展性和可用性方面面临着重大限制。为了解决这些挑战，我们提出了LP-COMDA，这是一个基于LLM的、物理信息丰富的自主代理，能够在最小人工监督下自动化电力电子系统中电力转换器的调制设计。与传统的AI辅助方法不同，LP-COMDA包含一个基于LLM的规划器，通过用户友好的聊天界面收集和验证设计规范。规划器随后与物理信息设计优化工具协调，自主迭代生成和优化调制设计。通过聊天界面，LP-COMDA提供可解释的设计过程，展示解释和图表。实验表明，LP-COMDA优于所有基线方法，在标准均方绝对误差方面，与第二好的基准方法相比，误差降低了63.2%。此外，对20位专家的实证研究表明，使用LP-COMDA的设计时间是传统方法的33倍以上，显示出其在设计效率方面的显著改进。|
 |**2024-11-21**|**Multi-LLM-Agent Systems: Techniques and Business Perspectives**|Yingxuan Yang et.al.|[2411.14033](http://arxiv.org/abs/2411.14033)|null|在（多模态）大型语言模型时代，大多数操作流程都可以通过LLM智能体进行重构和再现。LLM智能体能够感知、控制和从环境中获取反馈，以自主方式完成给定任务。除了环境交互特性外，LLM智能体还可以调用各种外部工具以简化任务完成过程。这些工具可以被视为包含私有或实时知识且不存在于LLM参数中的预定义操作流程。作为发展的自然趋势，调用工具的智能体正成为自主智能体，因此完整的智能系统最终变成了多LLM智能体系统（MLAS）。本文讨论了MLAS的技术和商业格局。与之前的单一LLM智能体系统相比，MLAS具有以下优势：i) 更高的任务解决性能潜力；ii) 更高的系统变化灵活性；iii) 为每个参与实体保留专有数据；iv) 为每个实体实现货币化的可行性。为了支持MLAS生态系统，我们提供了一个考虑技术要求、数据隐私和商业激励的MLAS协议的初步版本。因此，MLAS将成为实现未来人工集体智慧的实用解决方案。|
 
-<p align=right>(<a href=#updated-on-20251017>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20251018>back to top</a>)</p>
 
 ## llm
 
@@ -2206,7 +2206,7 @@
 |**2024-11-27**|**GATE OpenING: A Comprehensive Benchmark for Judging Open-ended Interleaved Image-Text Generation**|Pengfei Zhou et.al.|[2411.18499](http://arxiv.org/abs/2411.18499)|null|多模态大型语言模型（MLLMs）在视觉理解和生成任务方面取得了显著进展。然而，生成交织的图像-文本内容仍然是一个挑战，这需要综合的多模态理解和生成能力。虽然统一模型的进展提供了新的解决方案，但现有的基准由于数据量和多样性限制，不足以评估这些方法。为了填补这一差距，我们介绍了GATE OpenING（OpenING），这是一个包含5,400个高质量人工标注实例、涵盖56个真实世界任务的全面基准。OpenING覆盖了多样化的日常场景，如旅行指南、设计和头脑风暴，为挑战交织生成方法提供了一个强大的平台。此外，我们提出了IntJudge，这是一个用于评估开放式多模态生成方法的评判模型。使用新颖的数据流水线进行训练，我们的IntJudge与人类判断的吻合率达到82.42%，比基于GPT的评估器高出11.34%。在OpenING上的大量实验表明，当前的交织生成方法仍有很大的改进空间。关于交织图像-文本生成的关键发现进一步提出，以指导下一代模型的发展。OpenING已开源，请访问https://opening.github.io。|
 |**2024-11-27**|**Beyond Examples: High-level Automated Reasoning Paradigm in In-Context Learning via MCTS**|Jinyang Wu et.al.|[2411.18478](http://arxiv.org/abs/2411.18478)|null|在上下文学习（ICL）中，通过复杂的提示和高质量演示，使大型语言模型（LLMs）能够处理下游任务。然而，当面对复杂的数学推理任务时，这种传统的ICL范式显示出局限性，主要是因为它对示例质量的依赖性很大，以及在挑战性场景中需要人类干预。为了解决这些局限性，本文提出了一种HiAR-ICL，这是一种在ICL中的高级自动推理范式，它将焦点从具体示例转移到抽象思维模式，扩展了ICL中传统的上下文概念。HiAR-ICL引入了五个原子推理动作作为构建链式模式的根本组成部分。使用蒙特卡洛树搜索，我们探索推理路径并构建思维卡片来指导后续推理。然后我们开发了一个认知复杂度框架，该框架动态地将问题与适当的思想卡片相匹配。实验结果表明，HiAR-ICL的有效性，使用Qwen2.5-7B-Instruct在MATH基准测试中实现了最先进的准确率（79.6%），超过了GPT-4o（76.6%）和Claude 3.5（71.1%）。|
 
-<p align=right>(<a href=#updated-on-20251017>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20251018>back to top</a>)</p>
 
 ## infer
 
@@ -2555,7 +2555,7 @@
 |**2024-11-24**|**Chameleon: Adaptive Caching and Scheduling for Many-Adapter LLM Inference Environments**|Nikoleta Iliakopoulou et.al.|[2411.17741](http://arxiv.org/abs/2411.17741)|null|随着大型语言模型（LLMs）的广泛应用，其部署数量呈指数级增长，对推理集群提出了巨大需求。这些集群必须处理针对不同LLM下游任务的大量并发查询。为了处理具有大量LLM参数的多任务设置，方法如低秩自适应（LoRA）允许针对特定任务进行微调，同时跨任务共享大部分基础LLM模型。因此，它们允许以最小的内存需求并发处理任务。然而，现有的LLM服务系统存在效率低下的问题：它们忽视了工作负载异构性，由于频繁的适配器加载而施加了高链路带宽，以及在调度器中存在头阻塞问题。为了解决这些挑战，我们提出了Chameleon，这是一个针对多个适配器环境优化的新型LLM服务系统，它依赖于两个核心思想：适配器缓存和适配器感知调度。首先，Chameleon在GPU内存中缓存流行的适配器，最小化适配器加载时间。重要的是，它使用原本闲置的GPU内存，避免了额外的内存成本。其次，Chameleon使用非抢占式多队列调度，以高效地处理工作负载异构性。通过这种方式，Chameleon同时防止了头阻塞和饥饿现象。我们在最先进的LLM服务平台之上实现了Chameleon，并使用真实世界的生产跟踪和开源LLM对其进行了评估。在高负载下，Chameleon将P99和P50的TTFT延迟分别降低了80.7%和48.1%，同时与最先进的基线相比，提高了1.5倍的吞吐量。|
 |**2024-11-24**|**Task Scheduling for Efficient Inference of Large Language Models on Single Moderate GPU Systems**|Wenxiang Lin et.al.|[2411.15715](http://arxiv.org/abs/2411.15715)|null|大型语言模型（LLMs）因其庞大的模型尺寸而闻名，对计算资源和内存需求极高，导致在中等GPU系统上的推理效率低下。量化或剪枝等技术可以缩小模型尺寸，但通常会损害准确度，使其不适合实际应用。在这项工作中，我们介绍了\modelname{}，这是一个高性能的推理引擎，旨在加快LLMs的推理速度，同时不降低模型精度。\modelname{}采用了三种创新方法来提高推理效率：1）模型分区，允许跨CPU计算、GPU计算和CPU-GPU通信异步处理任务，2）自适应分区算法，以优化CPU、GPU和PCIe通信能力的利用，3）令牌分配策略，用于处理LLMs推理过程中的各种提示和生成任务。我们使用Mixtral、LLaMA-2、Qwen和PhiMoE等LLMs，在具有不同CPU和GPU的三个测试环境中进行了综合实验。实验结果表明，\modelname{}在解码速度上比 $1.11\times$到$1.80\times$更快，在预填充速度上比$1.69\times$到$6.33\times$更快，与最先进的解决方案llama.cpp和Fiddler相比，整体速度提高了$1.25\times$到$2.04\times$ 。|
 
-<p align=right>(<a href=#updated-on-20251017>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20251018>back to top</a>)</p>
 
 ## train
 
@@ -2843,5 +2843,5 @@
 |**2024-11-20**|**Assessing Gender Bias in LLMs: Comparing LLM Outputs with Human Perceptions and Official Statistics**|Tetiana Bas et.al.|[2411.13738](http://arxiv.org/abs/2411.13738)|**[link](https://github.com/tetianabas/llm_biases)**|**本研究通过比较大型语言模型（LLMs）对性别的感知与人类受访者、美国劳工统计局数据和50%无偏见基准的性别感知，来探讨LLMs中的性别偏见。我们使用职业数据和特定角色的句子创建了一个新的评估集。与LLMs训练数据中常见的基准不同，我们的集合是全新开发的，防止了数据泄露和测试集污染。我们对五个LLMs进行了测试，以使用单词答案预测每个角色的性别。我们使用Kullback-Leibler（KL）散度来比较模型输出与人类感知、统计数据和50%中性基准之间的差异。所有LLMs都显示出与性别中性的显著偏差，并且更符合统计数据，仍然反映了固有的偏见。**|
 |**2024-11-20**|**Hardware Scaling Trends and Diminishing Returns in Large-Scale Distributed Training**|Jared Fernandez et.al.|[2411.13055](http://arxiv.org/abs/2411.13055)|null|近年来，神经网络模型能力的显著提升是由模型规模、训练数据和相应的计算资源扩展驱动的。为了开发现代应用（如大型语言模型）所需的无尽大型网络，模型训练需要在数万台硬件加速器（例如GPU）上分布进行，这要求在大规模计算集群中协调计算和通信。在本工作中，我们证明了仔细考虑硬件配置和并行化策略对于有效（即计算和成本高效）地扩展模型规模、训练数据和总计算量至关重要。我们对大规模LLM训练工作负载在模型规模、硬件配置和分布式并行化策略方面的性能进行了广泛的实证研究。我们证明了：（1）超过一定规模后，某些分布式通信策略带来的开销导致之前被认为次优的并行化策略实际上变得更为可取；（2）即使硬件和并行化策略得到适当优化，增加加速器的总数来扩大大型模型训练也会迅速产生递减回报，这意味着每增加一个单位的功率或GPU时长的边际性能较差。|
 
-<p align=right>(<a href=#updated-on-20251017>back to top</a>)</p>
+<p align=right>(<a href=#updated-on-20251018>back to top</a>)</p>
 
